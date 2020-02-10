@@ -38,6 +38,12 @@ class App extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000')
+      .then(res => res.json())
+      .then(console.log)
+  }
+
   calculateFaceLocation = data => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputImage');
@@ -72,7 +78,7 @@ class App extends Component {
           this.displayFaceBox(this.calculateFaceLocation(response))
         })
       .catch(err => console.log(err))
-}
+  }
 
   onRouteChange = (route) => {
     if (route === 'signout') {
@@ -84,12 +90,7 @@ class App extends Component {
   }
 
   render() {
-    const {
-      isSignedIn,
-      route,
-      box,
-      imageUrl
-    } = this.state
+    const { isSignedIn, route, box, imageUrl } = this.state;
     return (
       <div className="App">
         <Particles className='particles' params={particlesOptions} />
