@@ -10,9 +10,9 @@ const database = {
   users: [
     {
       id: '123',
-      name: 'John',
-      email: 'john@doe.xyz',
-      password: 'cookie',
+      name: 'a',
+      email: 'a',
+      password: 'a',
       entries: 0,
       joined: new Date()
     },
@@ -43,20 +43,20 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signin', (req, res) => {
+  console.log(req.body, database.users)
   if (req.body.email === database.users[0].email &&
     req.body.password === database.users[0].password) {
-      res.json('singing in')
+      res.json(database.users[0]);
     }
   res.status(400).json('error loging in') 
 })
 
 app.post('/register', (req, res) => {
-    const { email, name, password } = req.body;
+    const { email, name } = req.body;
     database.users.push({
       id: '125',
       name: name,
       email: email,
-      password: password,
       entries: 0,
       joined: new Date()
     })
@@ -77,7 +77,7 @@ app.get('/profile/:id', (req, res) => {
   }
 })
 
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
   const { id } = req.body;
   let found = false;
   database.users.forEach(user => {
@@ -96,13 +96,13 @@ app.listen(3000, () => {
   console.log('app is running on port 3000')
 })
 
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
+// const saltRounds = 10;
+// const myPlaintextPassword = 's0/\/\P4$$w0rD';
+// const someOtherPlaintextPassword = 'not_bacon';
 
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+// bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
   // Store hash in your password DB.
-});
+// });
 
 // Load hash from your password DB.
 // bcrypt.compare(myPlaintextPassword, hash, function(err, result) {

@@ -1,10 +1,9 @@
 import React from 'react';
-import './style.css';
 
 class SignIn extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       signInEmail: '',
       signInPassword: ''
@@ -28,10 +27,11 @@ class SignIn extends React.Component {
         password: this.state.signInPassword
       })
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        if (data === 'singing in') {
+      .then(res => {
+        return res.json()})
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user);
           this.props.onRouteChange('home')
         }
       })
