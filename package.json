@@ -1,0 +1,23 @@
+{
+  "name": "smartbrain",
+  "version": "1.0.0",
+  "description": "1. Clone repository, in the project directory run `npm i`.\r 2. Make sure you are a PostgreSQL user. Enter your username and password in script.js (10:11) in the backend direcory. Prepare database.\r 3. Provide your Clarifai api key (it is free) in backend\\controllers\\image.js file.\r 3. In the backend directory run `npm start` and connect to port 3000.\r 4. In the frontend directory run `npm start`, connect different port and open [http://localhost:<<port>>] to view it in the browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "standard": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartaJaszewska/smart-brain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartaJaszewska/smart-brain/issues"
+  },
+  "homepage": "https://github.com/MartaJaszewska/smart-brain#readme",
+  "dependencies": {
+    "standard": "^14.3.4"
+  }
+}
